@@ -27,7 +27,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="py-24 md:py-32 bg-primary text-secondary">
+    <section className="py-24 md:py-32 bg-ivory text-charcoal">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <motion.div 
@@ -37,13 +37,13 @@ export function Process() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-4"
           >
-            <span className="text-xs uppercase tracking-[0.2em] text-highlight mb-6 block">
+            <span className="text-xs uppercase tracking-[0.2em] text-gold mb-6 block font-medium">
               The Experience
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
+            <h2 className="font-serif text-4xl md:text-5xl text-forest leading-tight mb-6">
               Our Process
             </h2>
-            <p className="text-secondary/70 font-light leading-relaxed">
+            <p className="text-muted font-light leading-relaxed">
               We ensure a smooth, comfortable, and highly personalized experience from the moment you enquire to the final stain.
             </p>
           </motion.div>
@@ -59,11 +59,11 @@ export function Process() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="relative pl-12"
                 >
-                  <span className="absolute left-0 top-1 font-serif text-3xl text-highlight opacity-30">
+                  <span className="absolute left-0 top-1 font-serif text-3xl text-gold opacity-50">
                     {step.num}
                   </span>
-                  <h3 className="font-serif text-2xl text-white mb-4 pl-2">{step.title}</h3>
-                  <p className="text-secondary/70 font-light pl-2">
+                  <h3 className="font-serif text-2xl text-forest mb-4 pl-2">{step.title}</h3>
+                  <p className="text-muted font-light pl-2">
                     {step.description}
                   </p>
                 </motion.div>

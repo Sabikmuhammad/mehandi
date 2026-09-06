@@ -37,7 +37,7 @@ export function Testimonials() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-forest relative overflow-hidden text-ivory">
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -46,7 +46,7 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="flex justify-center mb-8"
           >
-            <div className="flex gap-1 text-highlight">
+            <div className="flex gap-1 text-gold">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} className="w-5 h-5 fill-current" />
               ))}
@@ -63,14 +63,14 @@ export function Testimonials() {
                 transition={{ duration: 0.5 }}
                 className="absolute inset-0 flex flex-col items-center justify-center"
               >
-                <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-primary leading-relaxed italic mb-8">
+                <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-ivory leading-relaxed italic mb-8">
                   "{testimonials[currentIndex].text}"
                 </p>
                 <div className="flex flex-col items-center">
-                  <span className="text-sm font-medium text-primary uppercase tracking-widest">
+                  <span className="text-sm font-medium text-gold uppercase tracking-widest">
                     — {testimonials[currentIndex].name}
                   </span>
-                  <span className="text-xs text-primary/60 mt-1 uppercase tracking-widest">
+                  <span className="text-xs text-ivory/60 mt-1 uppercase tracking-widest">
                     {testimonials[currentIndex].type}
                   </span>
                 </div>
@@ -81,14 +81,14 @@ export function Testimonials() {
           <div className="flex justify-center gap-4 mt-12">
             <button
               onClick={prev}
-              className="p-3 border border-primary/20 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
+              className="p-3 border border-forest/20 bg-forest/40 rounded-full text-gold hover:bg-gold hover:text-forest transition-colors"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={next}
-              className="p-3 border border-primary/20 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
+              className="p-3 border border-forest/20 bg-forest/40 rounded-full text-gold hover:bg-gold hover:text-forest transition-colors"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />

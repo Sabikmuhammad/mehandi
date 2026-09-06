@@ -40,13 +40,13 @@ export function Navbar() {
 
   const isHome = pathname === "/";
   const navBackground = isScrolled 
-    ? "bg-secondary/95 backdrop-blur-md shadow-sm text-primary" 
+    ? "bg-ivory/95 backdrop-blur-md shadow-sm text-forest" 
     : isHome 
       ? "bg-transparent text-white" 
-      : "bg-transparent text-primary";
+      : "bg-transparent text-forest";
 
-  const logoColor = isScrolled || !isHome ? "text-primary" : "text-white";
-  const menuIconColor = isScrolled || !isHome ? "text-primary" : "text-white";
+  const logoColor = isScrolled || !isHome ? "text-forest" : "text-white";
+  const menuIconColor = isScrolled || !isHome ? "text-forest" : "text-white";
 
   return (
     <>
@@ -72,8 +72,8 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm uppercase tracking-widest hover:text-highlight transition-colors ${
-                  pathname === link.href ? "text-highlight" : ""
+                className={`text-sm uppercase tracking-widest hover:text-gold transition-colors ${
+                  pathname === link.href ? "text-gold font-medium" : ""
                 }`}
               >
                 {link.name}
@@ -81,7 +81,11 @@ export function Navbar() {
             ))}
             <Link
               href="/book"
-              className="px-6 py-2 border border-current rounded hover:bg-highlight hover:text-white hover:border-highlight transition-colors text-sm uppercase tracking-widest"
+              className={`px-6 py-2 border border-current rounded-sm transition-colors text-sm uppercase tracking-widest ${
+                isScrolled || !isHome 
+                  ? "hover:bg-forest hover:text-ivory" 
+                  : "hover:bg-white hover:text-forest"
+              }`}
             >
               Book Your Date
             </Link>
@@ -94,7 +98,7 @@ export function Navbar() {
             aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-primary" />
+              <X className="w-6 h-6 text-forest" />
             ) : (
               <Menu className={`w-6 h-6 ${menuIconColor}`} />
             )}
@@ -110,7 +114,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-secondary flex flex-col pt-24 px-6 pb-6 md:hidden"
+            className="fixed inset-0 z-40 bg-ivory flex flex-col pt-24 px-6 pb-6 md:hidden"
           >
             <nav className="flex flex-col gap-6 mt-8">
               {navLinks.map((link, i) => (
@@ -122,7 +126,9 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="text-3xl font-serif text-primary"
+                    className={`text-3xl font-serif ${
+                      pathname === link.href ? "text-gold" : "text-forest"
+                    }`}
                   >
                     {link.name}
                   </Link>
@@ -136,15 +142,15 @@ export function Navbar() {
               >
                 <Link
                   href="/book"
-                  className="inline-block px-8 py-3 bg-primary text-secondary rounded uppercase tracking-widest text-sm"
+                  className="inline-block px-8 py-3 bg-forest text-ivory rounded-sm uppercase tracking-widest text-sm"
                 >
                   Book Your Date
                 </Link>
               </motion.div>
             </nav>
             
-            <div className="mt-auto pt-8 border-t border-primary/20">
-              <p className="text-primary/70 text-sm">Where Every Detail Tells a Story.</p>
+            <div className="mt-auto pt-8 border-t border-forest/20">
+              <p className="text-forest/70 text-sm">Where Every Detail Tells a Story.</p>
             </div>
           </motion.div>
         )}

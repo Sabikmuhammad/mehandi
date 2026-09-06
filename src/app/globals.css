@@ -1,40 +1,52 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
-  --color-highlight: var(--highlight);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-primary: var(--forest);
+  --color-secondary: var(--ivory);
+  --color-accent: var(--charcoal);
+  --color-highlight: var(--gold);
+  --color-background: var(--ivory);
+  --color-foreground: var(--charcoal);
+  
+  /* Additional specific color variables */
+  --color-forest: var(--forest);
+  --color-ivory: var(--ivory);
+  --color-cream: var(--cream);
+  --color-gold: var(--gold);
+  --color-charcoal: var(--charcoal);
+  --color-muted: var(--muted);
+  --color-white: var(--white);
+  
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 :root {
-  --background: #F4F1E9; /* Warm Ivory */
-  --foreground: #1E1E1E; /* Deep Charcoal */
-  --primary: #1F3625; /* Deep Mehendi Green */
-  --secondary: #F4F1E9; /* Warm Ivory */
-  --accent: #9A5240; /* Henna Brown */
-  --highlight: #C29F5C; /* Antique Gold */
+  --forest: #193B29;
+  --ivory: #F7F4EC;
+  --cream: #EFE9DD;
+  --gold: #C9A227;
+  --charcoal: #1D251F;
+  --muted: #667168;
+  --white: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Even in dark mode, we keep the luxury ivory/forest aesthetic, just slightly dimmed if necessary. But for this brand, maybe dark mode just uses the same premium colors to ensure the brand identity remains consistent. Let's stick to the same or slightly adjusted for contrast */
-    --background: #18201b; /* Dark Forest */
-    --foreground: #F4F1E9; /* Warm Ivory Text */
-    --primary: #F4F1E9; /* Inverse Primary */
-    --secondary: #1F3625;
-    --accent: #C47762; /* Lighter Henna */
-    --highlight: #D4AF37; /* Brighter Gold */
+    /* Retain luxury aesthetic consistently */
+    --forest: #193B29;
+    --ivory: #F7F4EC;
+    --cream: #EFE9DD;
+    --gold: #C9A227;
+    --charcoal: #1D251F;
+    --muted: #667168;
+    --white: #FFFFFF;
   }
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--ivory);
+  color: var(--charcoal);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

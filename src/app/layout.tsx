@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col antialiased selection:bg-accent selection:text-white">
+      <body className="min-h-screen flex flex-col antialiased selection:bg-gold selection:text-forest">
         {children}
       </body>
     </html>

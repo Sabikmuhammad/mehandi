@@ -5,10 +5,10 @@ import Image from "next/image";
 
 export function Introduction() {
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-ivory relative overflow-hidden">
       {/* Decorative botanical element */}
       <div className="absolute top-0 right-0 w-64 h-64 pointer-events-none opacity-[0.03]">
-        <svg viewBox="0 0 100 100" className="w-full h-full fill-current text-primary">
+        <svg viewBox="0 0 100 100" className="w-full h-full fill-current text-forest">
           <path d="M50 0 Q60 40 100 50 Q60 60 50 100 Q40 60 0 50 Q40 40 50 0 Z" />
         </svg>
       </div>
@@ -25,12 +25,12 @@ export function Introduction() {
           >
             <div className="aspect-[3/4] relative w-full max-w-sm mx-auto overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1596489311494-df72049e6022?q=80&w=800&auto=format&fit=crop"
+                src="/images/artist-portrait.jpg"
                 alt="Mehendi artist at work"
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 border border-primary/10 m-4" />
+              <div className="absolute inset-0 border border-forest/10 m-4" />
             </div>
           </motion.div>
 
@@ -40,7 +40,7 @@ export function Introduction() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-xs uppercase tracking-[0.2em] text-accent mb-6"
+              className="text-xs uppercase tracking-[0.2em] text-gold mb-6 font-medium"
             >
               The Art of Mehendi
             </motion.span>
@@ -50,7 +50,7 @@ export function Introduction() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-serif text-4xl md:text-5xl lg:text-6xl text-primary leading-tight mb-8 text-balance"
+              className="font-serif text-4xl md:text-5xl lg:text-6xl text-forest leading-tight mb-8 text-balance"
             >
               More than a design.<br />
               <span className="italic">A memory you get to wear.</span>
@@ -61,7 +61,7 @@ export function Introduction() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6 text-foreground/80 font-light leading-relaxed max-w-xl"
+              className="space-y-6 text-charcoal/80 font-light leading-relaxed max-w-xl"
             >
               <p>
                 Every mehendi design is created with attention to symmetry, detail, personalization, and the significance of the occasion. We believe that the art on your hands should be as unique as the story you share.
@@ -84,7 +84,7 @@ export function Introduction() {
                 width={120} 
                 height={60} 
                 className="opacity-80"
-                style={{ filter: "invert(17%) sepia(21%) saturate(1005%) hue-rotate(94deg) brightness(94%) contrast(85%)" }} // Approximate filter for primary color
+                style={{ filter: "invert(20%) sepia(20%) saturate(1005%) hue-rotate(90deg) brightness(85%) contrast(95%)" }} 
               />
             </motion.div>
           </div>
