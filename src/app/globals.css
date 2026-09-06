@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-highlight: var(--highlight);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+:root {
+  --background: #F4F1E9; /* Warm Ivory */
+  --foreground: #1E1E1E; /* Deep Charcoal */
+  --primary: #1F3625; /* Deep Mehendi Green */
+  --secondary: #F4F1E9; /* Warm Ivory */
+  --accent: #9A5240; /* Henna Brown */
+  --highlight: #C29F5C; /* Antique Gold */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Even in dark mode, we keep the luxury ivory/forest aesthetic, just slightly dimmed if necessary. But for this brand, maybe dark mode just uses the same premium colors to ensure the brand identity remains consistent. Let's stick to the same or slightly adjusted for contrast */
+    --background: #18201b; /* Dark Forest */
+    --foreground: #F4F1E9; /* Warm Ivory Text */
+    --primary: #F4F1E9; /* Inverse Primary */
+    --secondary: #1F3625;
+    --accent: #C47762; /* Lighter Henna */
+    --highlight: #D4AF37; /* Brighter Gold */
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+/* Custom Utilities */
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility container-custom {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
