@@ -35,13 +35,15 @@ export default function BookPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedName, setSubmittedName] = useState("");
 
+  const [submitError, setSubmitError] = useState("");
+
   const {
     register,
     handleSubmit,
     trigger,
     watch,
     setValue,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     mode: "onTouched",
@@ -53,10 +55,18 @@ export default function BookPage() {
   const guests = watch("guests");
 
   const processForm: SubmitHandler<FormData> = async (data) => {
-    // In a real app, send data to Supabase here
-    console.log("Form data:", data);
-    setSubmittedName(data.name);
-    setIsSubmitted(true);
+    setSubmitError("");
+    
+    // Call the server action
+    const { submitBookingEnquiry } = await import('./actions');
+    const result = await submitBookingEnquiry(data);
+    
+    if (result.success && result.bookingId) {
+      setSubmittedName(data.name);
+      setIsSubmitted(true);
+    } else {
+      setSubmitError(result.error || "Failed to submit booking. Please try again.");
+    }
   };
 
   const nextStep = async () => {
@@ -322,37 +332,45 @@ export default function BookPage() {
               </AnimatePresence>
 
               {/* Navigation */}
-              <div className="mt-12 flex justify-between items-center pt-8 border-t border-forest/10">
-                {currentStep > 0 ? (
-                  <button
-                    type="button"
-                    onClick={prevStep}
-                    className="flex items-center gap-2 text-sm uppercase tracking-widest text-forest/70 hover:text-gold transition-colors"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    Back
-                  </button>
-                ) : (
-                  <div></div> // Spacer
+              <div className="mt-12">
+                {submitError && (
+                  <div className="mb-4 p-4 bg-red-50 border border-red-200 text-red-700 text-sm">
+                    {submitError}
+                  </div>
                 )}
+                <div className="flex justify-between items-center pt-8 border-t border-forest/10">
+                  {currentStep > 0 ? (
+                    <button
+                      type="button"
+                      onClick={prevStep}
+                      className="flex items-center gap-2 text-sm uppercase tracking-widest text-forest/70 hover:text-gold transition-colors"
+                    >
+                      <ArrowLeft className="w-4 h-4" />
+                      Back
+                    </button>
+                  ) : (
+                    <div></div> // Spacer
+                  )}
 
-                {currentStep < steps.length - 1 ? (
-                  <button
-                    type="button"
-                    onClick={nextStep}
-                    className="flex items-center gap-2 px-8 py-3 bg-forest text-ivory text-sm uppercase tracking-widest hover:bg-gold transition-colors"
-                  >
-                    Next
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                ) : (
-                  <button
-                    type="submit"
-                    className="flex items-center gap-2 px-8 py-3 bg-gold text-forest text-sm uppercase tracking-widest hover:bg-forest hover:text-ivory transition-colors font-medium"
-                  >
-                    Send Enquiry
-                  </button>
-                )}
+                  {currentStep < steps.length - 1 ? (
+                    <button
+                      type="button"
+                      onClick={nextStep}
+                      className="flex items-center gap-2 px-8 py-3 bg-forest text-ivory text-sm uppercase tracking-widest hover:bg-gold transition-colors"
+                    >
+                      Next
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex items-center gap-2 px-8 py-3 bg-gold text-forest text-sm uppercase tracking-widest hover:bg-forest hover:text-ivory transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? "Sending..." : "Send Enquiry"}
+                    </button>
+                  )}
+                </div>
               </div>
             </form>
           </div>
