@@ -63,7 +63,7 @@ export default function RevenueChart() {
           }}
           itemStyle={{ color: '#193B29', fontSize: '14px', fontWeight: 500 }}
           labelStyle={{ color: 'rgba(25, 59, 41, 0.6)', fontSize: '12px', marginBottom: '4px' }}
-          formatter={(value: number) => [`₹${value.toLocaleString('en-IN')}`, 'Revenue']}
+          formatter={(value) => [`₹${Number(value ?? 0).toLocaleString('en-IN')}`, 'Revenue']}
         />
         <Area 
           type="monotone" 
